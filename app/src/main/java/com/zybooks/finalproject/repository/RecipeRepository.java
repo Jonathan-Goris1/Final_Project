@@ -30,4 +30,10 @@ public class RecipeRepository {
 
         return recipeApiClient.getRecipe();
     }
+
+    //Calling executor method
+
+    public void searchRecipeApi(){
+        recipeApiClient.searchRecipeApi();
+    }
 }

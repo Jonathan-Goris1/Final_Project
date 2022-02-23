@@ -22,4 +22,9 @@ public class RecipeListViewModel extends ViewModel {
     public LiveData<List<RandomRecipeModel>> getRandomRecipe(){
         return recipeRepository.getRecipe();
     }
+
+    //calling method in repository
+    public void searchRecipeApi(){
+        recipeRepository.searchRecipeApi();
+    }
 }

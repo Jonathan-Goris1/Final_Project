@@ -61,7 +61,7 @@ public class RecipeApiClient {
                 //Canceling the retrofit call
                 myHandler.cancel(true);
             }
-        }, 4000, TimeUnit.MICROSECONDS);
+        }, 4000, TimeUnit.MILLISECONDS);
     }
 
 
