@@ -12,4 +12,8 @@ public interface RecipeApi {
     @GET("recipes/random")
     Call<RandomRecipeResponse> getRandomRecipe(@Query("number") int number,
             @Query("apiKey") String api_key);
+
+    @GET("recipes/complexSearch")
+    Call<RandomRecipeResponse> getSearchRecipe(@Query("query") String searchQuery,
+                                               @Query("apiKey") String api_key);
 }

@@ -6,6 +6,9 @@
         <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.469" />
         <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.469" />
         <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_favorites.xml" value="0.5194746376811594" />
+        <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_recycler_view.xml" value="0.5194746376811594" />
+        <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/fragment_search_bar.xml" value="0.2928709055876686" />
         <entry key="..\:/Users/jonat/AndroidStudioProjects/FinalProject/app/src/main/res/layout/recipe_list.xml" value="0.5541666666666667" />
       </map>
     </option>
