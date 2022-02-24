@@ -51,4 +51,14 @@ public class RecipeRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         this.mRecipe = mRecipe;
         notifyDataSetChanged();
     }
+
+    public RandomRecipeModel getSelectedRecipe(int position){
+        if(mRecipe != null){
+            if(mRecipe.size() > 0){
+                return mRecipe.get(position);
+            }
+        }
+        return null;
+
+    }
 }

@@ -3,43 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".view.DetailsActivity">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-                android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/recipe_title_textview"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:gravity="center"
-            tools:text="Recipe Title"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            tools:text="Recipe Title" />
+
+        <TextView
+            android:id="@+id/serving_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:drawableStartCompat="@drawable/ic_baseline_access_time_24"
+            tools:text="Ready in under 30  minutes" />
+
+        <ImageView
+            android:id="@+id/recipe_image"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            tools:src="@drawable/ic_baseline_search_24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Ready in under 30  minutes"
-            android:layout_marginTop="8dp"
-            app:drawableStartCompat="@drawable/ic_baseline_access_time_24" />
+            android:text="@string/description"
+            android:textSize="24sp" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-                android:src="@drawable/ic_baseline_search_24"/>
-
-
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="24sp" />
 
 
-
-
-        </LinearLayout>
-
+    </LinearLayout>
 
 
 </ScrollView>

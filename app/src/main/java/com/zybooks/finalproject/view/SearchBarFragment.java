@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,30 +35,37 @@ public class SearchBarFragment extends Fragment implements OnRecipeListener {
     private RecipeListViewModel recipeListViewModel;
     TextInputEditText textInputEditText;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search_bar, container, false);
         recipeListViewModel = new ViewModelProvider(this).get(RecipeListViewModel.class);
         textInputEditText = view.findViewById(R.id.search_textField);
+
         recipeRecyclerViewAdapter = new RecipeRecyclerViewAdapter(this);
 
+        ObserveAnyChange();
+        SetupSearchEdittext();
+
+        return view;
+
+    }
+
+    private void SetupSearchEdittext() {
         textInputEditText.setOnEditorActionListener(new TextInputEditText.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     //do what you want on the press of 'done'
                     // Inflate the layout for this fragment
                     searchSpecificRecipeApi(textInputEditText.getText().toString());
-                    ObserveAnyChange();
-
                 }
                 return false;
             }
         });
-
-        return view;
-
     }
+
+
 
     private void ObserveAnyChange() {
 
@@ -90,4 +98,5 @@ public class SearchBarFragment extends Fragment implements OnRecipeListener {
         Toast.makeText(getContext(), "The position =" + position, Toast.LENGTH_SHORT).show();
 
     }
+
 }

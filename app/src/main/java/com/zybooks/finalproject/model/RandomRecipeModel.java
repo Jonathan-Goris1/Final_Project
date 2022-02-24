@@ -1,8 +1,14 @@
 package com.zybooks.finalproject.model;
 
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class RandomRecipeModel {
+import androidx.room.Database;
+import androidx.room.Entity;
+
+import java.util.ArrayList;
+@Entity
+public class RandomRecipeModel implements Parcelable {
 
         public int id;
         public String title;
@@ -23,6 +29,29 @@ public class RandomRecipeModel {
         this.imageType = imageType;
         this.summary = summary;
     }
+
+    protected RandomRecipeModel(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        readyInMinutes = in.readInt();
+        servings = in.readInt();
+        sourceUrl = in.readString();
+        image = in.readString();
+        imageType = in.readString();
+        summary = in.readString();
+    }
+
+    public static final Creator<RandomRecipeModel> CREATOR = new Creator<RandomRecipeModel>() {
+        @Override
+        public RandomRecipeModel createFromParcel(Parcel in) {
+            return new RandomRecipeModel(in);
+        }
+
+        @Override
+        public RandomRecipeModel[] newArray(int size) {
+            return new RandomRecipeModel[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -86,5 +115,22 @@ public class RandomRecipeModel {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(title);
+        parcel.writeInt(readyInMinutes);
+        parcel.writeInt(servings);
+        parcel.writeString(sourceUrl);
+        parcel.writeString(image);
+        parcel.writeString(imageType);
+        parcel.writeString(summary);
     }
 }
