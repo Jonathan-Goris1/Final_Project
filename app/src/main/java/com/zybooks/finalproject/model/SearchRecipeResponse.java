@@ -5,25 +5,24 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class SearchRecipeModel {
+public class SearchRecipeResponse {
     //@SerializedName allows you to create your own string with a different name.
     // the serialized name is used when connecting the HTML
     //Take a look at the response in a internet browser to see what
     //object you want to be extracted
+    @SerializedName("results")
+    @Expose
+    private List<RandomRecipeModel> searchRecipeModel;
+
+    public List<RandomRecipeModel> getSearchRecipe(){
+        return searchRecipeModel;
+    }
     @SerializedName("id")
     @Expose
     private Integer id;
     @SerializedName("title")
     @Expose
     private String title;
-
-    @SerializedName("readyInMinutes")
-    @Expose
-    private Integer readyInMinutes;
-
-    @SerializedName("servings")
-    @Expose
-    private Integer servings;
 
     @SerializedName("image")
     @Expose
@@ -32,11 +31,9 @@ public class SearchRecipeModel {
     @Expose
     private List<String> imageUrls = null;
     // Constructor for the request
-    public SearchRecipeModel(Integer id, String title, Integer readyInMinutes, Integer servings, String image) {
+    public SearchRecipeResponse(Integer id, String title, Integer readyInMinutes, Integer servings, String image) {
         this.id = id;
         this.title = title;
-        this.readyInMinutes = readyInMinutes;
-        this.servings = servings;
         this.image = image;
 
     }
@@ -57,21 +54,6 @@ public class SearchRecipeModel {
         this.title = title;
     }
 
-    public Integer getReadyInMinutes() {
-        return readyInMinutes;
-    }
-
-    public void setReadyInMinutes(Integer readyInMinutes) {
-        this.readyInMinutes = readyInMinutes;
-    }
-
-    public Integer getServings() {
-        return servings;
-    }
-
-    public void setServings(Integer servings) {
-        this.servings = servings;
-    }
 
     public String getImage() {
         return image;

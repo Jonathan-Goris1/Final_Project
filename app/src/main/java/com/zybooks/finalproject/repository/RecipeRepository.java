@@ -2,7 +2,6 @@ package com.zybooks.finalproject.repository;
 
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.zybooks.finalproject.model.RandomRecipeModel;
 import com.zybooks.finalproject.network.RecipeApiClient;
@@ -28,12 +27,22 @@ public class RecipeRepository {
 
     public LiveData<List<RandomRecipeModel>> getRecipe(){
 
-        return recipeApiClient.getRecipe();
+        return recipeApiClient.getRandomRecipe();
+
+    }
+
+    public LiveData<List<RandomRecipeModel>> getSearchRecipe(){
+        return recipeApiClient.getSearchRecipe();
     }
 
     //Calling executor method
 
     public void searchRecipeApi(){
         recipeApiClient.searchRecipeApi();
+    }
+
+    public void searchSpecificRecipeApi(String query){
+
+        recipeApiClient.searchSpecificRecipeApi(query);
     }
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +20,19 @@ import com.zybooks.finalproject.R;
 import com.zybooks.finalproject.adapter.OnRecipeListener;
 import com.zybooks.finalproject.adapter.RecipeRecyclerViewAdapter;
 import com.zybooks.finalproject.model.RandomRecipeModel;
+import com.zybooks.finalproject.model.SearchRecipeResponse;
+import com.zybooks.finalproject.network.RetrofitService;
+import com.zybooks.finalproject.utils.Credentials;
+import com.zybooks.finalproject.utils.RecipeApi;
 import com.zybooks.finalproject.viewmodel.RecipeListViewModel;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class RecyclerViewFragment extends Fragment implements OnRecipeListener {
@@ -57,8 +69,6 @@ public class RecyclerViewFragment extends Fragment implements OnRecipeListener {
             if (randomRecipeModels != null) {
                 for (RandomRecipeModel recipe : randomRecipeModels) {
                     //Get the data in the log
-                    Log.d(TAG, "onChanged: " + recipe.getImage());
-
                     recipeRecyclerViewAdapter.setmRecipe(randomRecipeModels);
                 }
             }
@@ -80,6 +90,38 @@ public class RecyclerViewFragment extends Fragment implements OnRecipeListener {
 
     @Override
     public void onRecipeClick(int position) {
+        Toast.makeText(getContext(), "The position =" + position, Toast.LENGTH_SHORT).show();
 
+    }
+
+    private void GetRetrofitResponse(){
+        RecipeApi recipeApi = RetrofitService.getRecipeApi();
+        Call<SearchRecipeResponse> responseCall = recipeApi.getSearchRecipe("pizza", Credentials.NUMBER,Credentials.Api_Key);
+
+        responseCall.enqueue(new Callback<SearchRecipeResponse>() {
+            @Override
+            public void onResponse(Call<SearchRecipeResponse> call, Response<SearchRecipeResponse> response) {
+                if(response.code() == 200){
+                    Log.d(TAG,"The response " + response.raw().toString());
+
+                    List<RandomRecipeModel> recipe = new ArrayList<>(response.body().getSearchRecipe());
+                    for(RandomRecipeModel recipies: recipe ){
+                        Log.d(TAG, "onResponse: " + recipies.getTitle());
+                    }
+                }else{
+
+                    try {
+                        Log.d(TAG, "Error" + response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchRecipeResponse> call, Throwable t) {
+
+            }
+        });
     }
 }
