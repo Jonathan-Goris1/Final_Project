@@ -111,8 +111,10 @@ public class DetailsActivity extends AppCompatActivity {
         startActivity(i);}
 
         else if(getIntent().hasExtra("database")){
-            Recipe randomRecipeModel = getIntent().getParcelableExtra("recipe");
-            String url = randomRecipeModel.getSourceUrl();
+            Log.d("TAG", "shareIntent:  inside database extra");
+            Recipe recipes = getIntent().getParcelableExtra("database");
+            String url = recipes.getSourceUrl();
+            Log.d("TAG", "shareIntent: " + url);
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             startActivity(i);
@@ -247,6 +249,7 @@ public class DetailsActivity extends AppCompatActivity {
                 int recipeServings = randomRecipeModel.getServings();
                 int recipeReadyInMinutes = randomRecipeModel.getReadyInMinutes();
                 String recipeDescriptions = randomRecipeModel.getSummary();
+                String sourceUrl = randomRecipeModel.getSourceUrl();
 
 
                 //Creating an insert to place all these int and strings into the database
@@ -257,6 +260,7 @@ public class DetailsActivity extends AppCompatActivity {
                 recipe.setServings(recipeServings);
                 recipe.setReadyInMinutes(recipeReadyInMinutes);
                 recipe.setDescription(recipeDescriptions);
+                recipe.setSourceUrl(sourceUrl);
                 //Calling the database and inserting the recipe
                 recipedatabase.recipeDao().insert(recipe);
                 //A toast to notify the user that the recipe was place into their favorites

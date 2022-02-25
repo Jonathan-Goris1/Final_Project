@@ -54,6 +54,8 @@ public class RecyclerViewFragment extends Fragment implements OnRecipeListener {
 
         myRecyclerView = (RecyclerView) view.findViewById(R.id.response_recycler_view);
 
+        GetRetrofitResponse();
+
         ConfigureRecyclerView();
         //calling the observers
         ObserveAnyChange();
@@ -61,6 +63,8 @@ public class RecyclerViewFragment extends Fragment implements OnRecipeListener {
 
         searchRecipeApi();
         return view;
+
+
 
     }
 

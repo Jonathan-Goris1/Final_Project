@@ -2,6 +2,10 @@ package com.zybooks.finalproject.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -9,18 +13,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.zybooks.finalproject.R;
-import com.zybooks.finalproject.adapter.RecipeRecyclerViewAdapter;
 import com.zybooks.finalproject.adapter.database.DatabaseRecyclerViewAdapter;
 import com.zybooks.finalproject.adapter.database.OnDatabaseListener;
 import com.zybooks.finalproject.database.Recipe;
-import com.zybooks.finalproject.model.RandomRecipeModel;
 import com.zybooks.finalproject.viewmodel.DatabaseViewModel;
 
 import java.util.List;
@@ -45,7 +41,7 @@ public class FavoritesFragment extends Fragment implements OnDatabaseListener {
         databaseViewModel = new ViewModelProvider(this).get(DatabaseViewModel.class);
 
         myRecyclerView = (RecyclerView) view.findViewById(R.id.favorite_recycler_view);
-         horizontalLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        horizontalLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
         ConfigureRecyclerView();
         //calling the observers
@@ -78,7 +74,7 @@ public class FavoritesFragment extends Fragment implements OnDatabaseListener {
         //Toast.makeText(getContext(), "The position =" + position, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getContext(), DetailsActivity.class);
-        intent.putExtra("database",  databaseRecyclerViewAdapter.getSelectedRecipe(position));
+        intent.putExtra("database", databaseRecyclerViewAdapter.getSelectedRecipe(position));
         startActivity(intent);
     }
 }
