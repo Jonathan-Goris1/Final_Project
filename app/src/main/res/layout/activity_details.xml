@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textSize="24sp"
+            android:textColor="@color/white"
             android:textStyle="bold"
             tools:text="Recipe Title" />
 
@@ -24,7 +25,10 @@
             android:id="@+id/serving_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:drawablePadding="8dp"
             app:drawableStartCompat="@drawable/ic_baseline_access_time_24"
             tools:text="Ready in under 30  minutes" />
 
@@ -38,11 +42,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description"
+            android:textColor="@color/white"
+
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/description_text"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="match_parent"
             android:textSize="24sp" />
 

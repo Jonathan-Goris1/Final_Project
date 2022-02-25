@@ -1,4 +1,4 @@
-package com.zybooks.finalproject.adapter;
+package com.zybooks.finalproject.adapter.database;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,36 +9,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.zybooks.finalproject.R;
+import com.zybooks.finalproject.database.Recipe;
 import com.zybooks.finalproject.model.RandomRecipeModel;
 
 import java.util.List;
 
-public class RecipeRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DatabaseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<RandomRecipeModel> mRecipe;
-    private OnRecipeListener onRecipeListener;
+    private List<Recipe> mRecipe;
+    private OnDatabaseListener onDatabaseListener;
 
-    public RecipeRecyclerViewAdapter(OnRecipeListener onRecipeListener) {
-        this.onRecipeListener = onRecipeListener;
+    public DatabaseRecyclerViewAdapter(OnDatabaseListener onDatabaseListener) {
+        this.onDatabaseListener = onDatabaseListener;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_list, parent, false);
-        return new RecipeViewHolder(view, onRecipeListener);
+        return new DatabaseViewHolder(view, onDatabaseListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        ((RecipeViewHolder)holder).title.setText(mRecipe.get(position).getTitle());
+        ((DatabaseViewHolder)holder).title.setText(mRecipe.get(position).getTitle());
 
-        Glide.with(((RecipeViewHolder) holder)
+        Glide.with(((DatabaseViewHolder) holder)
                 .image.getContext())
                 .load(mRecipe.get(position).getImage())
                 .centerCrop()
-                .into(((RecipeViewHolder)holder).image);
+                .into(((DatabaseViewHolder)holder).image);
 
     }
 
@@ -51,12 +52,12 @@ public class RecipeRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
 
     }
 
-    public void setmRecipe(List<RandomRecipeModel> mRecipe) {
+    public void setmRecipe(List<Recipe> mRecipe) {
         this.mRecipe = mRecipe;
         notifyDataSetChanged();
     }
 
-    public RandomRecipeModel getSelectedRecipe(int position){
+    public Recipe getSelectedRecipe(int position){
         if(mRecipe != null){
             if(mRecipe.size() > 0){
                 return mRecipe.get(position);

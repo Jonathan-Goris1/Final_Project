@@ -92,7 +92,7 @@ public class RecyclerViewFragment extends Fragment implements OnRecipeListener {
 
     @Override
     public void onRecipeClick(int position) {
-        Toast.makeText(getContext(), "The position =" + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "The position =" + position, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getContext(), DetailsActivity.class);
         intent.putExtra("recipe",  recipeRecyclerViewAdapter.getSelectedRecipe(position));

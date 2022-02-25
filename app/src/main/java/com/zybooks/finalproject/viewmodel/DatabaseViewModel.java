@@ -28,4 +28,8 @@ public class DatabaseViewModel extends AndroidViewModel {
     public LiveData<List<Recipe>> getAllRecipe() {
         return allRecipe;
     }
+
+    public boolean setFavorite(boolean favorite){
+        return favorite;
+    }
 }

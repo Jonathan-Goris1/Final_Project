@@ -10,7 +10,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Recipe.class}, version = 1, exportSchema = false)
+@Database(entities = {Recipe.class}, version = 5, exportSchema = false)
 public abstract class RecipeDatabase extends RoomDatabase {
     //Creating an instance of the database
     private static RecipeDatabase instance;

@@ -12,6 +12,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/search"
+
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
@@ -23,8 +26,8 @@
             android:id="@+id/search_textField"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@null"
             android:inputType="text"
+            android:textColor="@color/white"
             android:imeOptions="actionDone"
             android:textColorHint="#757575"
             android:textSize="16sp" />

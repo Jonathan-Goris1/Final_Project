@@ -15,9 +15,14 @@ public interface RecipeDAO {
     @Insert
     void insert(Recipe recipe);
     //handles delete queries
-    @Delete
-    void delete(Recipe recipe);
+
+    @Query("Delete from recipe_table Where id = :recipeId")
+    void deleteRecipeId(int recipeId);
     //Query statement
+
+    @Query("Select * from recipe_table Where id = :recipeId")
+    int isDataExist(int recipeId);
+
     @Query("Select * from recipe_table")
     LiveData<List<Recipe>> getAllRecipe();
 }

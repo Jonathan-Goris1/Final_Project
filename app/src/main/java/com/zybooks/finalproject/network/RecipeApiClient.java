@@ -67,7 +67,7 @@ public class RecipeApiClient {
                 //Canceling the retrofit call
                 myHandler.cancel(true);
             }
-        }, 4000, TimeUnit.MILLISECONDS);
+        }, 5000, TimeUnit.MILLISECONDS);
     }
 
 
@@ -149,7 +149,7 @@ public class RecipeApiClient {
                 //Canceling the retrofit call
                 myHandler.cancel(true);
             }
-        }, 4000, TimeUnit.MILLISECONDS);
+        }, 5000, TimeUnit.MILLISECONDS);
     }
 
     private class RetrieveSearchRecipeRunnable implements Runnable {
